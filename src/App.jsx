@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,Routes, Switch } from 'react-router-dom';
 import OrderForm from './components/OrderForm';
 import OrderList from './components/OrderList';
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 import './styles.css';
 import './App.css';
 

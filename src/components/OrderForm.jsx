@@ -68,7 +68,7 @@ const OrderForm = ({ addOrder }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validaciones básicas
+    // Validaciones de formulario
     if (!formData.clientName.trim()) {
       setError('Por favor ingrese el nombre del cliente');
       return;
