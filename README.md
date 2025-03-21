@@ -10,12 +10,12 @@ Sistema de Comandas es una aplicación web moderna para la gestión de pedidos e
 
 ## ✨ Características
 
-- 🔄 **Comunicación en tiempo real** a través de MQTT
-- 📱 **Diseño responsivo** adaptado a múltiples dispositivos
-- 💾 **Persistencia local** de pedidos mediante localStorage
-- 🌐 **Sincronización con backend** a través de API REST
-- 📊 **Visualización de estados** de pedidos (pendientes, completados, cancelados)
-- 📝 **Gestión completa** de pedidos con productos y notas personalizadas
+- **Comunicación en tiempo real** a través de MQTT
+- **Diseño responsivo** adaptado a múltiples dispositivos
+- **Persistencia local** de pedidos mediante localStorage
+- **Sincronización con backend** a través de API REST
+- **Visualización de estados** de pedidos (pendientes, completados, cancelados)
+- **Gestión completa** de pedidos con productos y notas personalizadas
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -76,7 +76,7 @@ La aplicación se conecta a un broker MQTT para la comunicación en tiempo real.
 
 ```javascript
 // Broker MQTT por defecto
-const connected = MQTTService.connect("ws://54.173.36.51:8080");
+const connected = MQTTService.connect("ws://direccionMQTT:8080");
 ```
 
 Para modificar la URL del broker o las credenciales de acceso, edita los valores en el método `connect` dentro del archivo `MQTTService.js`.
@@ -86,7 +86,7 @@ Para modificar la URL del broker o las credenciales de acceso, edita los valores
 La aplicación se sincroniza con un backend a través de una API REST. La URL base se configura en `MQTTService.js`:
 
 ```javascript
-this.apiUrl = "https://db-mqtt-project.claqaqyky13d.us-east-1.rds.amazonaws.com/pedidos";
+this.apiUrl = variableAPI;
 ```
 
 ## 📱 Uso de la Aplicación
@@ -142,12 +142,5 @@ La aplicación utiliza localStorage para guardar los pedidos, lo que permite:
 
 ## 👥 Colaboradores
 
-- [Tu Nombre](https://github.com/tu-usuario) - Desarrollador Principal
+- Kevin-ALR - Desarrollador Principal
 
-## 📄 Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo LICENSE para más detalles.
-
-## 📞 Soporte
-
-Para reportar problemas o solicitar nuevas características, por favor crea un issue en el [repositorio GitHub](https://github.com/tu-usuario/sistema-de-comandas/issues).
