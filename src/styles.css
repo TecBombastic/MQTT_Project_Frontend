@@ -467,3 +467,55 @@
       overflow-x: auto;
     }
   }
+
+
+  /* Estilos para el indicador de estado MQTT */
+.mqtt-status {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-left: 15px;
+  }
+  
+  .mqtt-status.connected {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+  }
+  
+  .mqtt-status.disconnected {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .connected .status-dot {
+    background-color: #2ecc71;
+  }
+  
+  .disconnected .status-dot {
+    background-color: #e74c3c;
+  }
+  
+  .mqtt-alert {
+    position: relative;
+    margin: 10px;
+  }
+  
+  .close-alert {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+    color: #721c24;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }

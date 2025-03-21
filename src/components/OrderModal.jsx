@@ -41,7 +41,7 @@ const OrderModal = ({ order, onClose, updateOrderStatus }) => {
             <p><strong>Cliente:</strong> {order.clientName}</p>
             <p><strong>Mesa:</strong> {order.table}</p>
             <p><strong>Fecha y hora:</strong> {formatDate(order.timestamp)}</p>
-            <p><strong>Total:</strong> ${order.totalPrice.toFixed(2)}</p>
+            <p><strong>Total:</strong> ${Number(order.totalPrice).toFixed(2)}</p>
           </div>
           
           <div className="order-items">
@@ -60,15 +60,15 @@ const OrderModal = ({ order, onClose, updateOrderStatus }) => {
                   <tr key={index}>
                     <td>{item.name}</td>
                     <td>{item.quantity}</td>
-                    <td>${item.price.toFixed(2)}</td>
-                    <td>${(item.quantity * item.price).toFixed(2)}</td>
+                    <td>${Number(item.price).toFixed(2)}</td>
+                    <td>${(Number(item.quantity) * Number(item.price)).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>
               <tfoot>
                 <tr>
                   <td colSpan="3"><strong>Total:</strong></td>
-                  <td><strong>${order.totalPrice.toFixed(2)}</strong></td>
+                  <td><strong>${Number(order.totalPrice).toFixed(2)}</strong></td>
                 </tr>
               </tfoot>
             </table>
