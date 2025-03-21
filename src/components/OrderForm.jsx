@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 
+/**
+ * Componente para crear nuevos pedidos.
+ * Permite ingresar datos del cliente y agregar múltiples productos.
+ * 
+ * @param {Object} props - Propiedades del componente
+ * @param {Function} props.addOrder - Función para agregar un nuevo pedido al sistema
+ */
 const OrderForm = ({ addOrder }) => {
   const [formData, setFormData] = useState({
     clientName: '',
@@ -11,11 +18,24 @@ const OrderForm = ({ addOrder }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+
+  /**
+   * Maneja cambios en los campos principales del formulario.
+   * @param {Object} e - Evento del input
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+
+  /**
+   * Maneja cambios en los campos de los productos.
+   * Actualiza el producto específico y recalcula el precio total.
+   * 
+   * @param {number} index - Índice del producto en el array
+   * @param {Object} e - Evento del input
+   */
   const handleItemChange = (index, e) => {
     const { name, value } = e.target;
     const updatedItems = [...formData.items];
@@ -34,6 +54,10 @@ const OrderForm = ({ addOrder }) => {
     });
   };
 
+
+  /**
+   * Agrega un nuevo producto vacío al formulario.
+   */
   const addItem = () => {
     setFormData({
       ...formData,
@@ -41,6 +65,11 @@ const OrderForm = ({ addOrder }) => {
     });
   };
 
+
+  /**
+   * Elimina un producto del formulario.
+   * @param {number} index - Índice del producto a eliminar
+   */
   const removeItem = (index) => {
     if (formData.items.length === 1) {
       setError('El pedido debe tener al menos un producto');
@@ -65,6 +94,13 @@ const OrderForm = ({ addOrder }) => {
     setError('');
   };
 
+
+  /**
+   * Procesa el envío del formulario.
+   * Valida los datos, crea el pedido y resetea el formulario.
+   * 
+   * @param {Object} e - Evento del formulario
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -107,6 +143,7 @@ const OrderForm = ({ addOrder }) => {
     }, 3000);
   };
 
+  
   return (
     <div className="order-form-container">
       <h2>Nuevo Pedido</h2>

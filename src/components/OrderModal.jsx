@@ -1,13 +1,29 @@
 import React from 'react';
 
+/**
+ * Componente de modal que muestra los detalles completos de un pedido.
+ * @param {Object} order - El pedido a mostrar en detalle
+ * @param {Function} onClose - Función para cerrar el modal
+ * @param {Function} updateOrderStatus - Función para actualizar el estado del pedido
+ */
 const OrderModal = ({ order, onClose, updateOrderStatus }) => {
-  // Formatear fecha
+
+  /**
+   * Formatea una cadena de fecha a formato local
+   * @param {string} dateString - Cadena de fecha a formatear
+   * @returns {string} Fecha formateada en formato local
+   */
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
   };
   
-  // Traducir estado a español
+
+  /**
+   * Traduce el estado del pedido al español
+   * @param {string} status - Estado del pedido en inglés
+   * @returns {string} Estado traducido al español
+   */
   const translateStatus = (status) => {
     switch (status) {
       case 'pending':
@@ -21,11 +37,16 @@ const OrderModal = ({ order, onClose, updateOrderStatus }) => {
     }
   };
   
-  // Manejar cambio de estado
+
+  /**
+   * Maneja el cambio de estado de un pedido
+   * @param {string} newStatus - Nuevo estado a asignar al pedido
+   */
   const handleStatusChange = (newStatus) => {
     updateOrderStatus(order.id, newStatus);
     onClose();
   };
+  
   
   return (
     <div className="modal-overlay">

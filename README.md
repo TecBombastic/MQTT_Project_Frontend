@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+# Sistema de Comandas - Aplicación de Gestión de Pedidos para Restaurantes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![React](https://img.shields.io/badge/React-19.0.0-blue.svg)](https://reactjs.org/)
+[![MQTT](https://img.shields.io/badge/MQTT-5.10.4-green.svg)](https://mqtt.org/)
+[![React Router](https://img.shields.io/badge/React_Router-7.4.0-orange.svg)](https://reactrouter.com/)
 
-## Available Scripts
+## 📋 Descripción
 
-In the project directory, you can run:
+Sistema de Comandas es una aplicación web moderna para la gestión de pedidos en restaurantes que utiliza el protocolo MQTT para comunicación en tiempo real. Permite crear y gestionar pedidos, visualizar su estado y mantener una sincronización entre los dispositivos conectados al sistema.
 
-### `npm start`
+## ✨ Características
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔄 **Comunicación en tiempo real** a través de MQTT
+- 📱 **Diseño responsivo** adaptado a múltiples dispositivos
+- 💾 **Persistencia local** de pedidos mediante localStorage
+- 🌐 **Sincronización con backend** a través de API REST
+- 📊 **Visualización de estados** de pedidos (pendientes, completados, cancelados)
+- 📝 **Gestión completa** de pedidos con productos y notas personalizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologías Utilizadas
 
-### `npm test`
+- **React 19.0.0**: Biblioteca de JavaScript para construir interfaces de usuario
+- **React Router 7.4.0**: Sistema de enrutamiento para aplicaciones React
+- **MQTT 5.10.4**: Protocolo de mensajería ligero para comunicación M2M (Machine to Machine)
+- **CSS personalizado**: Estilos propios para una experiencia de usuario única
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Instalación
 
-### `npm run build`
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/sistema-de-comandas.git
+cd sistema-de-comandas
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Inicia la aplicación en modo desarrollo:
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación en tu navegador.
 
-### `npm run eject`
+## 📦 Estructura del Proyecto
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+sistema-de-comandas/
+│
+├── public/               # Archivos públicos y HTML principal
+│
+├── src/                  # Código fuente
+│   ├── components/       # Componentes React
+│   │   ├── Navbar.js     # Barra de navegación
+│   │   ├── OrderCard.js  # Tarjeta de pedido individual
+│   │   ├── OrderForm.js  # Formulario para crear pedidos
+│   │   ├── OrderList.js  # Lista de pedidos por estado
+│   │   └── OrderModal.js # Modal con detalles del pedido
+│   │
+│   ├── MQTTService.js    # Servicio de comunicación MQTT
+│   ├── App.js            # Componente principal
+│   ├── App.css           # Estilos específicos de la aplicación
+│   ├── styles.css        # Estilos globales
+│   └── index.js          # Punto de entrada
+│
+└── package.json          # Dependencias y scripts
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔧 Configuración
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Conexión MQTT
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La aplicación se conecta a un broker MQTT para la comunicación en tiempo real. La configuración se encuentra en `MQTTService.js`:
 
-## Learn More
+```javascript
+// Broker MQTT por defecto
+const connected = MQTTService.connect("ws://54.173.36.51:8080");
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Para modificar la URL del broker o las credenciales de acceso, edita los valores en el método `connect` dentro del archivo `MQTTService.js`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### API Backend
 
-### Code Splitting
+La aplicación se sincroniza con un backend a través de una API REST. La URL base se configura en `MQTTService.js`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+this.apiUrl = "https://db-mqtt-project.claqaqyky13d.us-east-1.rds.amazonaws.com/pedidos";
+```
 
-### Analyzing the Bundle Size
+## 📱 Uso de la Aplicación
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Crear un Pedido
 
-### Making a Progressive Web App
+1. Navega a la página principal "Crear Pedido"
+2. Completa los datos del cliente y mesa
+3. Agrega productos con sus cantidades, precios y notas
+4. Haz clic en "Enviar Pedido"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Gestionar Pedidos
 
-### Advanced Configuration
+1. Navega a la sección "Recepción"
+2. Visualiza los pedidos organizados por estado (pendientes, completados, cancelados)
+3. Haz clic en un pedido para ver sus detalles
+4. Cambia el estado del pedido según sea necesario
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔄 Flujo de Comunicación
 
-### Deployment
+1. **Creación de Pedido**:
+   - El frontend crea el pedido y lo guarda localmente
+   - Se publica un mensaje MQTT en el tópico `restaurant/orders/new`
+   - El pedido se guarda en la base de datos a través de la API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. **Actualización de Estado**:
+   - El frontend actualiza el estado del pedido
+   - Se publica un mensaje MQTT en el tópico `restaurant/orders/update`
+   - Todos los clientes conectados reciben la actualización en tiempo real
 
-### `npm run build` fails to minify
+## ⚠️ Manejo de Errores
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación incluye un sistema robusto de manejo de errores que distingue entre:
+
+- **Errores de conexión MQTT**: Mostrados en una alerta roja en la parte superior
+- **Errores de API**: Mostrados en una alerta amarilla con temporizador de auto-cierre
+
+## 🧪 Pruebas
+
+Ejecuta las pruebas automatizadas con:
+
+```bash
+npm test
+```
+
+## 🔒 Persistencia Local
+
+La aplicación utiliza localStorage para guardar los pedidos, lo que permite:
+
+- Recuperar los pedidos incluso después de cerrar el navegador
+- Funcionar offline y sincronizar cuando se recupera la conexión
+- Mejorar el rendimiento al reducir las solicitudes al servidor
+
+## 👥 Colaboradores
+
+- [Tu Nombre](https://github.com/tu-usuario) - Desarrollador Principal
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo LICENSE para más detalles.
+
+## 📞 Soporte
+
+Para reportar problemas o solicitar nuevas características, por favor crea un issue en el [repositorio GitHub](https://github.com/tu-usuario/sistema-de-comandas/issues).

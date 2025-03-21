@@ -1,13 +1,28 @@
 import React from 'react';
 
+/**
+ * Componente que muestra la información resumida de un pedido en forma de tarjeta.
+ * @param {Object} order - El pedido a mostrar
+ * @param {Function} onClick - Función que se ejecuta al hacer clic en la tarjeta
+ */
 const OrderCard = ({ order, onClick }) => {
-  // Formatear fecha
+
+  /**
+   * Formatea una cadena de fecha a formato local
+   * @param {string} dateString - Cadena de fecha a formatear
+   * @returns {string} Fecha formateada en formato local
+   */
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
   };
-  
-  // Obtener clase CSS basada en el estado
+
+
+  /**
+   * Obtiene la clase CSS correspondiente al estado del pedido
+   * @param {string} status - Estado del pedido
+   * @returns {string} Clase CSS para el estado
+   */
   const getStatusClass = (status) => {
     switch (status) {
       case 'pending':
@@ -20,8 +35,13 @@ const OrderCard = ({ order, onClick }) => {
         return '';
     }
   };
-  
-  // Traducir estado a español
+
+
+  /**
+   * Traduce el estado del pedido al español
+   * @param {string} status - Estado del pedido en inglés
+   * @returns {string} Estado traducido al español
+   */
   const translateStatus = (status) => {
     switch (status) {
       case 'pending':
@@ -34,6 +54,7 @@ const OrderCard = ({ order, onClick }) => {
         return status;
     }
   };
+
   
   return (
     <div className={`order-card ${getStatusClass(order.status)}`} onClick={onClick}>
