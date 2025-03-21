@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# MQTT_Proyect
-Repositorio dedicado a la creación de un servicio de comandas empleando MQTT
-=======
 # Sistema de Comandas - Aplicación de Gestión de Pedidos para Restaurantes
 
 [![React](https://img.shields.io/badge/React-19.0.0-blue.svg)](https://reactjs.org/)
@@ -147,5 +143,3 @@ La aplicación utiliza localStorage para guardar los pedidos, lo que permite:
 ## 👥 Colaboradores
 
 - Kevin-ALR - Desarrollador Principal
-
->>>>>>> develop
